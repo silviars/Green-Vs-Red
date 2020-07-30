@@ -5,7 +5,7 @@ import model.Generation;
 public class GameServiceImpl implements GameService {
 
     //the inspected cell coordinates
-    private int y, x;
+    private int y1, x1;
     //The number of turns we inspect the cell
     private int numOfTurns;
     //keep track of how many times the cell was green
@@ -13,13 +13,13 @@ public class GameServiceImpl implements GameService {
     private Generation currentGen;
 
 
-   public GameServiceImpl(int x, int y, int turns, Generation generationZero){
-       this.y = y;
-       this.x = x;
+   public GameServiceImpl(int x1, int y1, int turns, Generation generationZero){
+       this.y1 = y1;
+       this.x1 = x1;
        this.numOfTurns = turns;
        this.currentGen = generationZero;
 
-       if(generationZero.getCell(y,x) == 0){
+       if(generationZero.getCell(y1,x1) == 0){
            this.greenStateCount = 0;
        } else {
            this.greenStateCount = 1;
@@ -48,14 +48,16 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public void updateGreenStateCount(Generation nextGeneration){
-       if(nextGeneration.getCell(y, x) == 1){
+       if(nextGeneration.getCell(y1, x1) == 1){
            greenStateCount++;
        }
    }
 
    @Override
    public void formNextGen(Generation nextGeneration) {
+
        for(int currRow = 0; currRow < currentGen.getY(); currRow++){
+
            for(int currColumn = 0; currColumn < currentGen.getX(); currColumn++){
 
                if(becomesGreen(currRow, currColumn)){
@@ -71,7 +73,7 @@ public class GameServiceImpl implements GameService {
        int greenNeighbours = countGreenNeighbours(y, x);
 
        //red in current gen
-       if(currentGen.getGrid()[y][x] == 0) {
+       if(currentGen.getCell(y,x) == 0) {
            switch(greenNeighbours){
                case 3: case 6:
                    return true;

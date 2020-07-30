@@ -33,7 +33,4 @@ public class Generation {
         return grid[y][x];
     }
 
-    public int[][] getGrid(){
-        return grid;
-    }
 }
