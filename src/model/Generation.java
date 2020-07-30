@@ -17,7 +17,7 @@ public class Generation {
 
 
     public int getX(){
-        return this.x;
+        return x;
     }
 
     public int getY(){
