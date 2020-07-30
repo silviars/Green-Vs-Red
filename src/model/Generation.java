@@ -9,17 +9,12 @@ public class Generation {
     //width (the number of columns)
     private int x;
 
-
     public Generation(int y, int x){
         this.x = x;
         this.y = y;
         this.grid = new int[y][x];
     }
 
-
-    public void setGreenCell(int y, int x){
-        this.grid[y][x] = 1;
-    }
 
     public int getX(){
         return this.x;
@@ -33,4 +28,7 @@ public class Generation {
         return grid[y][x];
     }
 
+    public void setGreenCell(int y, int x){
+        this.grid[y][x] = 1;
+    }
 }
